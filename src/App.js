@@ -3,8 +3,17 @@ import AgregarCita from './components/AgregarCita';
 
 class App extends Component {
 
-  crearCita = (informacioCita) => {
-    console.log(informacioCita);
+  state = {
+    citas : []
+  }
+
+  crearCita = (nuevaCita) => {
+    const citas = [...this.state.citas, nuevaCita];
+    console.log(citas);
+
+    this.setState({
+      citas
+    });
   }
   render(){
     return (
