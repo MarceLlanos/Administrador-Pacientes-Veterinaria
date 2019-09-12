@@ -2,6 +2,13 @@ import React, { Component } from 'react';
 
 class AgregarCita extends Component {
 
+  // Refs de los inputs
+  nombreMascotaRef = React.createRef();
+  nombreDuenioRef = React.createRef();
+  fechaRef = React.createRef();
+  horaRef = React.createRef();
+  sintomasRef = React.createRef();
+
   //state
   state = {
     mascota: '',
@@ -11,15 +18,13 @@ class AgregarCita extends Component {
     sintoma : ''
   }
 
-  // Refs de los inputs
-  nombreMascotaRef = React.createRef();
-  nombreDuenioRef = React.createRef();
-  fechaRef = React.createRef();
-  horaRef = React.createRef();
-  sintomasRef = React.createRef();
-
   crearNuevaCita = (e) => {
     e.preventDefault();
+    console.log(this.nombreMascotaRef.current.value);
+    console.log(this.nombreDuenioRef.current.value);
+    console.log(this.fechaRef.current.value);
+    console.log(this.horaRef.current.value);
+    console.log(this.sintomasRef.current.value);
     this.props.crearCita();
   }
   render() {
@@ -31,34 +36,34 @@ class AgregarCita extends Component {
             <div className = "form-group row">
               <label className = "col-sm-4 col-lg-2 col-form-label">Nombre mascota</label>
               <div className = "cols-sm-8 col-lg-10">
-                <input className = "form-control" type ="text" placeholder = "Nombre mascota"/>
+                <input ref = {this.nombreMascotaRef} className = "form-control" type ="text" placeholder = "Nombre mascota"/>
               </div>
             </div>
 
             <div className = "form-group row">
               <label className = "col-sm-4 col-lg-2 col-form-label">Nombre dueño</label>
               <div className = "cols-sm-8 col-lg-10">
-                <input className = "form-control" type ="text" placeholder = "Nombre del dueño"/>
+                <input ref = {this.nombreDuenioRef} className = "form-control" type ="text" placeholder = "Nombre del dueño"/>
               </div>
             </div>
 
             <div className = "form-group row">
               <label className = "col-sm-4 col-lg-2 col-form-label">Fecha</label>
               <div className = "cols-sm-8 col-lg-10">
-                <input className = "form-control" type ="date"/>
+                <input ref = {this.fechaRef} className = "form-control" type ="date"/>
               </div>
             </div>
 
             <div className = "form-group row">
               <label className = "col-sm-4 col-lg-2 col-form-label">Hora</label>
               <div className = "cols-sm-8 col-lg-10">
-                <input className = "form-control" type ="time"/>
+                <input ref = {this.horaRef} className = "form-control" type ="time"/>
               </div>
             </div>
             <div className = "form-group row">
               <label className = "col-sm-4 col-lg-2 col-form-label">Sintomas</label>
               <div className = "cols-sm-8 col-lg-10">
-                <textarea className = "form-control"></textarea>
+                <textarea ref = {this.sintomasRef} className = "form-control"></textarea>
               </div>
             </div>
             <div className = "form-group row justify-content-end">
