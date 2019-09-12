@@ -3,8 +3,8 @@ import AgregarCita from './components/AgregarCita';
 
 class App extends Component {
 
-  crearCita = () => {
-    
+  crearCita = (informacioCita) => {
+    console.log(informacioCita);
   }
   render(){
     return (

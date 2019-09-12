@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+//Libreria que genera un id unico
+import uuid from 'uuid';
 
 class AgregarCita extends Component {
 
@@ -20,12 +22,23 @@ class AgregarCita extends Component {
 
   crearNuevaCita = (e) => {
     e.preventDefault();
-    console.log(this.nombreMascotaRef.current.value);
-    console.log(this.nombreDuenioRef.current.value);
-    console.log(this.fechaRef.current.value);
-    console.log(this.horaRef.current.value);
-    console.log(this.sintomasRef.current.value);
-    this.props.crearCita();
+
+    const mascota = this.nombreMascotaRef.current.value,
+          duenio = this.nombreDuenioRef.current.value,
+          fecha = this.fechaRef.current.value,
+          hora = this.horaRef.current.value,
+          sintomas = this.sintomasRef.current.value
+
+    const nuevaCita = {
+      id: uuid(),
+      mascota,
+      duenio,
+      fecha,
+      hora,
+      sintomas
+    }
+
+    this.props.crearCita(nuevaCita);
   }
   render() {
     return (
