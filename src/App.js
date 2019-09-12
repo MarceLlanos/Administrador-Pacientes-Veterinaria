@@ -2,12 +2,18 @@ import React, {Component} from 'react';
 import AgregarCita from './components/AgregarCita';
 
 class App extends Component {
+
+  crearCita = () => {
+    console.log('Desde app.js');
+  }
   render(){
     return (
       <div className="container">
         <div className = "row">
           <div className = "col-md-6">
-            <AgregarCita />
+            <AgregarCita 
+              crearCita = {this.crearCita}
+            />
           </div>
         </div>
       </div>
