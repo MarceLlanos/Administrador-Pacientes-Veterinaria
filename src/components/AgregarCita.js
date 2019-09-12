@@ -9,15 +9,10 @@ class AgregarCita extends Component {
   nombreDuenioRef = React.createRef();
   fechaRef = React.createRef();
   horaRef = React.createRef();
-  sintomasRef = React.createRef();
-
-  //state
+	sintomasRef = React.createRef();
+  
   state = {
-    mascota: '',
-    duenio: '',
-    fecha: '',
-    hora: '',
-    sintoma : ''
+    error : false
   }
 
   crearNuevaCita = (e) => {
@@ -27,24 +22,31 @@ class AgregarCita extends Component {
           duenio = this.nombreDuenioRef.current.value,
           fecha = this.fechaRef.current.value,
           hora = this.horaRef.current.value,
-          sintomas = this.sintomasRef.current.value
-
-    const nuevaCita = {
-      id: uuid(),
-      mascota,
-      duenio,
-      fecha,
-      hora,
-      sintomas
-    }
-		//Se envia el objeto al padre para actualizar el state
-		this.props.crearCita(nuevaCita);
+					sintomas = this.sintomasRef.current.value;
 		
-		//Reinicia el formulario
-		e.currentTarget.reset();
+		if(mascota === '' || duenio === '' || fecha === '' || hora === '' || sintomas === ''){
+			this.setState({error : true});
+		}else{
+      const nuevaCita = {
+        id: uuid(),
+        mascota,
+        duenio,
+        fecha,
+        hora,
+        sintomas
+      }
+      //Se envia el objeto al padre para actualizar el state
+      this.props.crearCita(nuevaCita);
+      
+      //Reinicia el formulario
+      e.currentTarget.reset();
+
+      this.setState({error : false})
+    }
 
   }
   render() {
+    const existeError = this.state.error;
     return (
       <div className = 'card mt-5'>
         <div className = "card-body">
@@ -89,6 +91,7 @@ class AgregarCita extends Component {
               </div>
             </div>
           </form>
+          { existeError ? <div className = "alert alert-danger text-center">Todos los campos son obligatorios</div> : ''}
         </div>
       </div>
     );
