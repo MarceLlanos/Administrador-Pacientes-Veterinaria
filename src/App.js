@@ -16,6 +16,19 @@ class App extends Component {
       citas
     });
   }
+
+  borrarCita = id => {
+    //obtener copia del state
+    const citasActuales = [...this.state.citas];
+
+
+    //borrar el elemento del state: existe una funcion que se llama fielter
+    const citas = citasActuales.filter(cita => cita.id !== id);
+
+    //Actualizar el state
+
+    this.setState({citas});
+  }
   render(){
     return (
       <div className="container">
@@ -29,6 +42,7 @@ class App extends Component {
 					<div className = "col-md-6">
 						<ListaCitas 
 							citas = {this.state.citas}
+              borrarCita = {this.borrarCita}
 						/>
 					</div>
         </div>
