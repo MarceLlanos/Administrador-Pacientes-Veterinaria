@@ -14,7 +14,8 @@ class App extends Component {
     const citasLS = localStorage.getItem('citas');
     if(citasLS){
       this.setState({
-        citas: JSON.parse(citasLS)
+        //JSON.parse transforma de string a un arreglo lo contrario al stringfy
+        citas: JSON.parse(conditionalExpression)
       })
     }
   }
