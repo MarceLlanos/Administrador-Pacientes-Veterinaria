@@ -15,7 +15,7 @@ class App extends Component {
     if(citasLS){
       this.setState({
         //JSON.parse transforma de string a un arreglo lo contrario al stringfy
-        citas: JSON.parse(conditionalExpression)
+        citas: JSON.parse(citasLS)
       })
     }
   }

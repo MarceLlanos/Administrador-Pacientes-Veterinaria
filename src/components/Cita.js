@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import PropTypes from 'prop-types';
 
 class Cita extends Component {
 
@@ -9,6 +9,7 @@ class Cita extends Component {
 
   render() {
 		const {duenio, fecha, hora, mascota, sintomas} =  this.props.info
+
     return (
       <div className = "media mt-3">
 				<div className = "media-body">
@@ -24,6 +25,17 @@ class Cita extends Component {
     );
   }
 }
+Cita.propTypes = {
+	info : PropTypes.shape({
+		duenio: PropTypes.string.isRequired,
+		fecha : PropTypes.string.isRequired,
+		hora: PropTypes.string.isRequired,
+		id: PropTypes.string.isRequired,
+		mascota: PropTypes.string.isRequired,
+		sintomas: PropTypes.string.isRequired
 
+	}),
+	borrarCita : PropTypes.func.isRequired
+};
 
 export default Cita
